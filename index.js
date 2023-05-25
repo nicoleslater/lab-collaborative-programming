@@ -6,8 +6,11 @@ const morseCodeDictionary = require("./morse-code-dictionary.json");
  * @returns {string[]} An array of strings.
  */
 function sortByStringLength(arrOfStrings) {
-  let result = arrOfStrings.sort();
-    return result;
+   return arrOfStrings.sort((a,b)=> a.length - b.length);
+
+
+  // let result = arrOfStrings.sort();
+  //   return result;
 }
 
 /**
@@ -33,12 +36,23 @@ function textScroller(word) {
  * @returns {Number} The difference between the largest and smallest number.
  */
 function betweenExtremes(numbers) {
-  for (let element of numbers){
-    return numbers;
+  if (numbers.length === 0){
+    return [];
   }
-  if (typeof element === ""){
-    return "";
-  }
+ 
+  let maxNumber = -Infinity
+  let minNumber = Infinity
+
+for (let i = 0; i < numbers.length; i++){
+ if(typeof numbers[i] !== 'number'){
+        return numbers;
+ } else {
+
+  minNumber = Math.min(minNumber, numbers[i])
+  maxNumber = Math.max(maxNumber, numbers[i])
+ }
+}
+return maxNumber - minNumber;
 }
 
 /**
